@@ -56,6 +56,7 @@ def clean_demand_per_group(demand: pd.DataFrame) -> pd.DataFrame:
     - The function uses ``bfill`` (backward fill) which propagates future
       values into past gaps. For forecasting tasks this constitutes data
       leakage; consider using ``ffill`` or linear interpolation instead.
+      In simple terms, bffill uses the tomorrow's demand to fill in today's missing value, which is not realistic for forecasting.
     - Performance degrades with many groups due to repeated full-DataFrame
       boolean indexing. A ``groupby``-based approach would be more efficient.
 
